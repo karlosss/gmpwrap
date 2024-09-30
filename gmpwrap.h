@@ -4,11 +4,14 @@
 #include <iostream>
 #include "gmp.h"
 
-template <int PRECISION_BITS>
+static void set_precision(int precision_bits) {
+    mpf_set_default_prec(precision_bits);
+}
+
 class BigFloat {
 public:
     BigFloat() {
-        mpf_init2(fp, PRECISION_BITS);
+        mpf_init(fp);
     }
 
     BigFloat(int value): BigFloat() {
@@ -111,9 +114,13 @@ public:
       return mpf_cmp(fp, other.fp) >= 0;
     }
 
+    int get_precision() const {
+        return mpf_get_prec(fp);
+    }
+
     std::string toString() const {
         char* str;
-        gmp_asprintf(&str, ("%." + std::to_string(PRECISION_BITS) + "Ff").c_str(), fp);
+        gmp_asprintf(&str, ("%." + std::to_string(get_precision()) + "Ff").c_str(), fp);
         std::string result(str);
         free(str);
         return result;
@@ -134,14 +141,12 @@ private:
     }
 };
 
-template <int PRECISION_BITS>
-std::ostream& operator<<(std::ostream& stream, const BigFloat<PRECISION_BITS> & bf) {
+static std::ostream & operator<<(std::ostream &stream, const BigFloat &bf) {
     stream << bf.toString();
     return stream;
 }
 
-template <int PRECISION_BITS>
-std::istream& operator>>(std::istream& stream, BigFloat<PRECISION_BITS> & bf) {
+static std::istream & operator>>(std::istream &stream, BigFloat &bf) {
     std::string value;
     stream >> value;
     bf = value.c_str();
