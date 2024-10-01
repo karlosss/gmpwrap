@@ -3,4 +3,4 @@ project(gmpwrap)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_library(gmpwrap SHARED gmpwrap.cpp)
+add_library(gmpwrap SHARED gmpwrap.cpp gmpwrap.h)

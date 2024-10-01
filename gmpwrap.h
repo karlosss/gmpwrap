@@ -26,6 +26,10 @@ public:
         setString(value);
     }
 
+    BigFloat(const BigFloat & other): BigFloat() {
+        setBigFloat(other);
+    }
+
     BigFloat& operator=(const char* value) {
         setString(value);
         return *this;
@@ -81,6 +85,12 @@ public:
     BigFloat operator*(const BigFloat & other) const {
         BigFloat result;
         mpf_mul(result.fp, fp, other.fp);
+        return result;
+    }
+
+    BigFloat operator*(unsigned long int value) const {
+        BigFloat result;
+        mpf_mul_ui(result.fp, fp, value);
         return result;
     }
 
