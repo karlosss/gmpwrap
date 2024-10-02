@@ -135,6 +135,11 @@ public:
         free(str);
         return result;
     }
+
+    double toDouble() const {
+        return mpf_get_d(fp);
+    }
+
 private:
     mpf_t fp;
     void setDouble(double value) {
