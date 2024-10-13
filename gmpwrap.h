@@ -14,6 +14,10 @@ public:
         mpf_init(fp);
     }
 
+    ~BigFloat() {
+        mpf_clear(fp);
+    }
+
     BigFloat(int value): BigFloat() {
         setInt(value);
     }
