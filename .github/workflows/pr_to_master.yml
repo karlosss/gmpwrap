@@ -1,0 +1,25 @@
+name: Check PR to master
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Install gtest
+        run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+
+      - name: Create build directory
+        run: mkdir build
+
+      - name: Build
+        run: cmake --build build --target gmpwrap_test && cd build && make
+
+      - name: Run tests
+        run: build/gmpwrap_test
