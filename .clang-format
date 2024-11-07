@@ -1,0 +1,51 @@
+Language: Cpp
+Standard: c++20
+
+# misc config
+UseTab: Never
+ColumnLimit: 120
+
+# indent config
+IndentWidth: 4
+AccessModifierOffset: -4
+
+# brace config
+BracedInitializerIndentWidth: 4
+BreakBeforeBraces: Attach
+InsertBraces: true
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterCaseLabel: false
+  AfterEnum: false
+  AfterExternBlock: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyNamespace: true
+  SplitEmptyRecord: true
+
+# templates config
+AlwaysBreakTemplateDeclarations: Yes
+
+# function parameters config
+BinPackParameters: false
+AllowShortFunctionsOnASingleLine: Empty
+
+# pointers config
+PointerAlignment: Left
+ReferenceAlignment: Middle
+
+# for loop config
+SpaceBeforeRangeBasedForLoopColon: true
+
+# includes sorting
+SortIncludes: CaseInsensitive

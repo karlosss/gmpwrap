@@ -16,17 +16,17 @@ public:
 
     ~BigInteger();
 
-    BigInteger& operator=(const char* value);
-    BigInteger& operator=(int value);
-    BigInteger& operator=(const BigInteger & value);
+    BigInteger & operator=(const char* value);
+    BigInteger & operator=(int value);
+    BigInteger & operator=(const BigInteger & value);
 
-    BigInteger& operator+=(const BigInteger & other);
+    BigInteger & operator+=(const BigInteger & other);
 
-    BigInteger& operator-=(const BigInteger & other);
+    BigInteger & operator-=(const BigInteger & other);
 
-    BigInteger& operator*=(const BigInteger & other);
+    BigInteger & operator*=(const BigInteger & other);
 
-    BigInteger& operator/=(const BigInteger & other);
+    BigInteger & operator/=(const BigInteger & other);
 
     BigInteger operator+(const BigInteger & other) const;
 
@@ -55,11 +55,12 @@ public:
     int to_int() const;
 
     const mpz_t & get() const;
+
 private:
     mpz_t i;
 };
 
-static std::ostream & operator<<(std::ostream &stream, const BigInteger &bi);
+static std::ostream & operator<<(std::ostream & stream, const BigInteger & bi);
 
-static std::istream & operator>>(std::istream &stream, BigInteger &bi);
-#endif //BIGINTEGER_H
+static std::istream & operator>>(std::istream & stream, BigInteger & bi);
+#endif // BIGINTEGER_H

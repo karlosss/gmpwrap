@@ -8,7 +8,7 @@ void set(mpf_t fp, int value) {
     mpf_set_si(fp, value);
 }
 
-void set(mpf_t fp, const char *value) {
+void set(mpf_t fp, const char* value) {
     mpf_set_str(fp, value, 10);
 }
 
@@ -24,19 +24,19 @@ BigFloat::BigFloat() {
     mpf_init(fp);
 }
 
-BigFloat::BigFloat(int value): BigFloat() {
+BigFloat::BigFloat(int value) : BigFloat() {
     set(fp, value);
 }
 
-BigFloat::BigFloat(double value): BigFloat() {
+BigFloat::BigFloat(double value) : BigFloat() {
     set(fp, value);
 }
 
-BigFloat::BigFloat(const char* value): BigFloat() {
+BigFloat::BigFloat(const char* value) : BigFloat() {
     set(fp, value);
 }
 
-BigFloat::BigFloat(const BigFloat & value): BigFloat() {
+BigFloat::BigFloat(const BigFloat & value) : BigFloat() {
     set(fp, value);
 }
 
@@ -114,27 +114,27 @@ BigFloat BigFloat::operator/(const BigFloat & other) const {
     return result;
 }
 
-bool BigFloat::operator<(const BigFloat &other) const {
+bool BigFloat::operator<(const BigFloat & other) const {
     return mpf_cmp(fp, other.fp) < 0;
 }
 
-bool BigFloat::operator>(const BigFloat &other) const {
+bool BigFloat::operator>(const BigFloat & other) const {
     return mpf_cmp(fp, other.fp) > 0;
 }
 
-bool BigFloat::operator==(const BigFloat &other) const {
+bool BigFloat::operator==(const BigFloat & other) const {
     return mpf_cmp(fp, other.fp) == 0;
 }
 
-bool BigFloat::operator!=(const BigFloat &other) const {
+bool BigFloat::operator!=(const BigFloat & other) const {
     return mpf_cmp(fp, other.fp) != 0;
 }
 
-bool BigFloat::operator<=(const BigFloat &other) const {
+bool BigFloat::operator<=(const BigFloat & other) const {
     return mpf_cmp(fp, other.fp) <= 0;
 }
 
-bool BigFloat::operator>=(const BigFloat &other) const {
+bool BigFloat::operator>=(const BigFloat & other) const {
     return mpf_cmp(fp, other.fp) >= 0;
 }
 
@@ -158,17 +158,14 @@ const mpf_t & BigFloat::get() const {
     return fp;
 }
 
-std::ostream & operator<<(std::ostream &stream, const BigFloat &bf) {
+std::ostream & operator<<(std::ostream & stream, const BigFloat & bf) {
     stream << bf.to_string();
     return stream;
 }
 
-std::istream & operator>>(std::istream &stream, BigFloat &bf) {
+std::istream & operator>>(std::istream & stream, BigFloat & bf) {
     std::string value;
     stream >> value;
     bf = value.c_str();
     return stream;
 }
-
-
-

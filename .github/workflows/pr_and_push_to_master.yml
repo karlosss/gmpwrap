@@ -9,8 +9,21 @@ on:
       - master
 
 jobs:
+  check_linting:
+    name: Check linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Run clang-format
+        uses: jidicula/clang-format-action@v4.13.0
+        with:
+          clang-format-version: '18'
+
   run_tests:
     # Taken from https://github.com/bastianhjaeger/github_actions_gtest_example
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
