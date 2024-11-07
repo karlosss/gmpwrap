@@ -17,18 +17,18 @@ public:
 
     ~BigFloat();
 
-    BigFloat& operator=(const char* value);
-    BigFloat& operator=(double value);
-    BigFloat& operator=(int value);
-    BigFloat& operator=(const BigFloat & value);
+    BigFloat & operator=(const char* value);
+    BigFloat & operator=(double value);
+    BigFloat & operator=(int value);
+    BigFloat & operator=(const BigFloat & value);
 
-    BigFloat& operator+=(const BigFloat & other);
+    BigFloat & operator+=(const BigFloat & other);
 
-    BigFloat& operator-=(const BigFloat & other);
+    BigFloat & operator-=(const BigFloat & other);
 
-    BigFloat& operator*=(const BigFloat & other);
+    BigFloat & operator*=(const BigFloat & other);
 
-    BigFloat& operator/=(const BigFloat & other);
+    BigFloat & operator/=(const BigFloat & other);
 
     BigFloat operator+(const BigFloat & other) const;
 
@@ -59,12 +59,13 @@ public:
     double to_double() const;
 
     const mpf_t & get() const;
+
 private:
     mpf_t fp;
 };
 
-static std::ostream & operator<<(std::ostream &stream, const BigFloat &bf);
+static std::ostream & operator<<(std::ostream & stream, const BigFloat & bf);
 
-static std::istream & operator>>(std::istream &stream, BigFloat &bf);
+static std::istream & operator>>(std::istream & stream, BigFloat & bf);
 
-#endif //BIGFLOAT_H
+#endif // BIGFLOAT_H

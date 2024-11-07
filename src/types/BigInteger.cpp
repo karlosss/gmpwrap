@@ -7,7 +7,7 @@ void set(mpz_t i, int value) {
     mpz_set_si(i, value);
 }
 
-void set(mpz_t i, const char *value) {
+void set(mpz_t i, const char* value) {
     mpz_set_str(i, value, 10);
 }
 
@@ -19,15 +19,15 @@ BigInteger::BigInteger() {
     mpz_init(i);
 }
 
-BigInteger::BigInteger(int value): BigInteger() {
+BigInteger::BigInteger(int value) : BigInteger() {
     set(i, value);
 }
 
-BigInteger::BigInteger(const char *value): BigInteger() {
+BigInteger::BigInteger(const char* value) : BigInteger() {
     set(i, value);
 }
 
-BigInteger::BigInteger(const BigInteger &value): BigInteger() {
+BigInteger::BigInteger(const BigInteger & value) : BigInteger() {
     set(i, value);
 }
 
@@ -35,7 +35,7 @@ BigInteger::~BigInteger() {
     mpz_clear(i);
 }
 
-BigInteger & BigInteger::operator=(const char *value) {
+BigInteger & BigInteger::operator=(const char* value) {
     set(i, value);
     return *this;
 }
@@ -45,44 +45,44 @@ BigInteger & BigInteger::operator=(int value) {
     return *this;
 }
 
-BigInteger & BigInteger::operator=(const BigInteger &value) {
+BigInteger & BigInteger::operator=(const BigInteger & value) {
     set(i, value);
     return *this;
 }
 
-BigInteger & BigInteger::operator+=(const BigInteger &other) {
+BigInteger & BigInteger::operator+=(const BigInteger & other) {
     mpz_add(i, i, other.i);
     return *this;
 }
 
-BigInteger & BigInteger::operator-=(const BigInteger &other) {
+BigInteger & BigInteger::operator-=(const BigInteger & other) {
     mpz_sub(i, i, other.i);
     return *this;
 }
 
-BigInteger & BigInteger::operator*=(const BigInteger &other) {
+BigInteger & BigInteger::operator*=(const BigInteger & other) {
     mpz_mul(i, i, other.i);
     return *this;
 }
 
-BigInteger & BigInteger::operator/=(const BigInteger &other) {
+BigInteger & BigInteger::operator/=(const BigInteger & other) {
     mpz_div(i, i, other.i);
     return *this;
 }
 
-BigInteger BigInteger::operator+(const BigInteger &other) const {
+BigInteger BigInteger::operator+(const BigInteger & other) const {
     BigInteger result;
     mpz_add(result.i, i, other.i);
     return result;
 }
 
-BigInteger BigInteger::operator-(const BigInteger &other) const {
+BigInteger BigInteger::operator-(const BigInteger & other) const {
     BigInteger result;
     mpz_sub(result.i, i, other.i);
     return result;
 }
 
-BigInteger BigInteger::operator*(const BigInteger &other) const {
+BigInteger BigInteger::operator*(const BigInteger & other) const {
     BigInteger result;
     mpz_mul(result.i, i, other.i);
     return result;
@@ -94,33 +94,33 @@ BigInteger BigInteger::operator*(unsigned long int value) const {
     return result;
 }
 
-BigInteger BigInteger::operator/(const BigInteger &other) const {
+BigInteger BigInteger::operator/(const BigInteger & other) const {
     BigInteger result;
     mpz_div(result.i, i, other.i);
     return result;
 }
 
-bool BigInteger::operator<(const BigInteger &other) const {
+bool BigInteger::operator<(const BigInteger & other) const {
     return mpz_cmp(i, other.i) < 0;
 }
 
-bool BigInteger::operator>(const BigInteger &other) const {
+bool BigInteger::operator>(const BigInteger & other) const {
     return mpz_cmp(i, other.i) > 0;
 }
 
-bool BigInteger::operator==(const BigInteger &other) const {
+bool BigInteger::operator==(const BigInteger & other) const {
     return mpz_cmp(i, other.i) == 0;
 }
 
-bool BigInteger::operator!=(const BigInteger &other) const {
+bool BigInteger::operator!=(const BigInteger & other) const {
     return mpz_cmp(i, other.i) != 0;
 }
 
-bool BigInteger::operator<=(const BigInteger &other) const {
+bool BigInteger::operator<=(const BigInteger & other) const {
     return mpz_cmp(i, other.i) <= 0;
 }
 
-bool BigInteger::operator>=(const BigInteger &other) const {
+bool BigInteger::operator>=(const BigInteger & other) const {
     return mpz_cmp(i, other.i) >= 0;
 }
 
