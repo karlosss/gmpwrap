@@ -7,6 +7,7 @@ on:
 
 jobs:
   run_tests:
+    # Taken from https://github.com/bastianhjaeger/github_actions_gtest_example
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -19,7 +20,7 @@ jobs:
         run: mkdir build
 
       - name: Build
-        run: cmake --build build --target gmpwrap_test && cd build && make
+        run: cd build && cmake .. && make
 
       - name: Run tests
         run: build/gmpwrap_test
