@@ -139,3 +139,15 @@ int BigInteger::to_int() const {
 const mpz_t & BigInteger::get() const {
     return i;
 }
+
+std::ostream & operator<<(std::ostream & stream, const BigInteger & bi) {
+    stream << bi.to_string();
+    return stream;
+}
+
+std::istream & operator>>(std::istream & stream, BigInteger & bi) {
+    std::string value;
+    stream >> value;
+    bi = value.c_str();
+    return stream;
+}
