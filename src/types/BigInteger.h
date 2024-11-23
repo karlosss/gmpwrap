@@ -60,7 +60,7 @@ private:
     mpz_t i;
 };
 
-static std::ostream & operator<<(std::ostream & stream, const BigInteger & bi);
+std::ostream & operator<<(std::ostream & stream, const BigInteger & bi);
 
-static std::istream & operator>>(std::istream & stream, BigInteger & bi);
+std::istream & operator>>(std::istream & stream, BigInteger & bi);
 #endif // BIGINTEGER_H

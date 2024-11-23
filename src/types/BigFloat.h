@@ -64,8 +64,8 @@ private:
     mpf_t fp;
 };
 
-static std::ostream & operator<<(std::ostream & stream, const BigFloat & bf);
+std::ostream & operator<<(std::ostream & stream, const BigFloat & bf);
 
-static std::istream & operator>>(std::istream & stream, BigFloat & bf);
+std::istream & operator>>(std::istream & stream, BigFloat & bf);
 
 #endif // BIGFLOAT_H

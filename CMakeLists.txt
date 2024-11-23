@@ -23,5 +23,6 @@ add_executable(gmpwrap_test
 )
 target_include_directories(gmpwrap_test PUBLIC src)
 target_link_libraries(gmpwrap_test PUBLIC gmpwrap)
+
 find_package(GTest REQUIRED)
 target_link_libraries(gmpwrap_test PUBLIC GTest::gtest GTest::gtest_main)
